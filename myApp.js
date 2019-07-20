@@ -9,19 +9,31 @@ var app = express();
 
 
 /** 1) Meet the node console. */
-console.log('Hello World!')
+console.log("Hello World");
 
 /** 2) A first working Express Server */
-
+const handler = function(req, res) {
+// res.send('Hello Express');
+}
+app.get('/', handler)
 
 /** 3) Serve an HTML file */
-
+const serveHtml = function(req, res) {
+console.log('send file index.html')
+res.sendFile(`${__dirname}/views/index.html`)
+}
+app.get('/', serveHtml)
 
 /** 4) Serve static assets  */
-
+const assets = express.static(`${__dirname}/public`)
+app.use(assets)
 
 /** 5) serve JSON on a specific route */
-
+const response = {"message": "Hello json"}
+const serveJson = function(req, res) {
+res.json(process.env.MESSAGE_STYLE === 'uppercase' ? response.toUppercase : response)
+}
+app.get('/json', serveJson)
 
 /** 6) Use the .env file to configure the app */
  
