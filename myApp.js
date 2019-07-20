@@ -9,8 +9,7 @@ var app = express();
 
 
 /** 1) Meet the node console. */
-console.log( "Hello World")
-
+console.log('Hello World!')
 
 /** 2) A first working Express Server */
 
@@ -25,8 +24,8 @@ console.log( "Hello World")
 
 
 /** 6) Use the .env file to configure the app */
-
-
+ 
+ 
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
 
@@ -40,7 +39,7 @@ console.log( "Hello World")
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
 
-
+  
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
 
