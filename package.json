@@ -7,9 +7,9 @@
 		"cookie-parser": "^1.4.3",
 		"fcc-express-bground": "https://github.com/Em-Ant/fcc-express-bground-pkg.git"
 	},
-	"main": "server.js",
+	"main": "start.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node start.js"
 	},
 	"engines": {
 		"node": "4.4.5"

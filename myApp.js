@@ -1,21 +1,20 @@
+import express from 'express'
+// import BodyParser from 'body-parser'
+var bodyParser = require('body-parser')
 
-var express = require('express');
-var app = express();
-
-/** 7) Root-level Middleware - A logger */
-//  place it before all the routes !
-const logger = (req, res, next) => {
-console.log(`${req.method} ${req.path} - ${req.ip}`);
-next();
-}
-
-app.use(logger)
+const app = express();
+// const bodyParser = BodyParser()
 
 // --> 7)  Mount the Logger middleware here
-
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+next();
+}
+app.use(logger)
 
 // --> 11)  Mount the body-parser middleware  here
-
+const parseBody = bodyParser.urlencoded({extended: false})
+app.use(parseBody)
 
 /** 1) Meet the node console. */
 console.log("Hello World");
@@ -28,7 +27,7 @@ console.log("Hello World");
 
 /** 3) Serve an HTML file */
 const serveHtml = function(req, res) {
-res.sendFile(`${__dirname}/views/index.html`)
+  res.sendFile(`${__dirname}/views/index.html`)
 }
 app.get('/', serveHtml)
 
@@ -55,15 +54,47 @@ res.json(
 }
 app.get('/json', serveJson)
 
-/** 8) Chaining middleware. A Time server */
+/** 7) Root-level Middleware - A logger */
+//  place it before all the routes !
 
+
+/** 8) Chaining middleware. A Time server */
+app.get('/now', function(req, res, next) {
+req.time = new Date().toString()
+next();
+}, function(req, res) {
+res.json({time: req.time});
+})
 
 /** 9)  Get input from client - Route parameters */
-
+app.get('/:word/echo', function(req, res, next){
+  console.log(req.params)
+  next()
+}, function(req, res, next){
+  res.json({
+    echo: req.params.word
+  })
+})
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
+// app.get('/name', function(req, res, next){
+//   console.log(req.query)
+//   next()
+// }, function(req, res, next){
+//   const params = req.query
+//   res.json({
+//     name: `${params.first} ${params.last}`
+//   })
+// })
 
+app.route('/name')
+  .get((req, res) => res.json({
+   name: `${req.query.first} ${req.query.last}`
+}))
+  .post((req, res) => res.json({
+   name: `${req.body.first} ${req.body.last}`
+}))
   
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
