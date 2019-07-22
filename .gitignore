@@ -1,0 +1,168 @@
+      # WEB GITIGNORE
+      # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+      # dependencies
+      /node_modules
+      /.pnp
+      .pnp.js
+      *.rej
+
+      # testing
+      /coverage
+
+      # production
+      /build
+      ## Obj-C/Swift specific
+      *.hmap
+      *.ipa
+      *.dSYM.zip
+      *.dSYM
+
+      # misc
+      .DS_Store
+      .env
+      .env.local
+      .env.development.local
+      .env.test.local
+      .env.production.local
+
+      npm-debug.log*
+      yarn-debug.log*
+      yarn-error.log*
+
+      # MOBILE GITIGNORE
+      # OSX
+      #
+      .DS_Store
+
+      # Xcode
+      #
+      build/
+      *.pbxuser
+      !default.pbxuser
+      *.mode1v3
+      !default.mode1v3
+      *.mode2v3
+      !default.mode2v3
+      *.perspectivev3
+      !default.perspectivev3
+      xcuserdata
+      *.xccheckout
+      *.moved-aside
+      DerivedData
+      *.hmap
+      *.ipa
+      *.xcuserstate
+      project.xcworkspace
+
+      # Android/IntelliJ
+      #
+      build/
+      .idea
+      .gradle
+      local.properties
+      *.iml
+
+      # node.js
+      #
+      node_modules/
+      npm-debug.log
+      yarn-error.log
+
+      # BUCK
+      buck-out/
+      \.buckd/
+      *.keystore
+
+      # fastlane
+      #
+      # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+      # screenshots whenever they are needed.
+      # For more information about the recommended setup visit:
+      # https://docs.fastlane.tools/best-practices/source-control/
+
+      fastlane/report.xml
+      fastlane/Preview.html
+      fastlane/screenshots
+
+      # Bundle artifact
+      *.jsbundle
+
+      ARTICLE.md
+
+      docs/
+
+      # Created by https://www.gitignore.io/api/ruby
+      # Edit at https://www.gitignore.io/?templates=ruby
+
+      ### Ruby ###
+      *.gem
+      *.rbc
+      /.config
+      /coverage/
+      /InstalledFiles
+      /pkg/
+      /spec/reports/
+      /spec/examples.txt
+      /test/tmp/
+      /test/version_tmp/
+      /tmp/
+
+      # Used by dotenv library to load environment variables.
+      # .env
+
+      ## Specific to RubyMotion:
+      .dat*
+      .repl_history
+      build/
+      *.bridgesupport
+      build-iPhoneOS/
+      build-iPhoneSimulator/
+
+      ## Specific to RubyMotion (use of CocoaPods):
+      #
+      # We recommend against adding the Pods directory to your .gitignore. However
+      # you should judge for yourself, the pros and cons are mentioned at:
+      # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+      #
+      # vendor/Pods/
+
+      ## Documentation cache and generated files:
+      /.yardoc/
+      /_yardoc/
+      /doc/
+      /rdoc/
+
+      ## Environment normalization:
+      /.bundle/
+      /vendor/bundle
+      /lib/bundler/man/
+
+      # for a library or gem, you might want to ignore these files since the code is
+      # intended to run in multiple environments; otherwise, check them in:
+      # Gemfile.lock
+      # .ruby-version
+      # .ruby-gemset
+
+      # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+      .rvmrc
+
+      # End of https://www.gitignore.io/api/ruby
+
+      # DEV IGNORE
+      .tern-port
+
+      # Created by https://www.gitignore.io/api/cocoapods
+      # Edit at https://www.gitignore.io/?templates=cocoapods
+
+      ### CocoaPods ###
+      ## CocoaPods GitIgnore Template
+
+      # CocoaPods - Only use to conserve bandwidth / Save time on Pushing
+      #           - Also handy if you have a large number of dependant pods
+      #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
+      Pods/
+
+      # End of https://www.gitignore.io/api/cocoapods
+
+      e2e/output/*.png
