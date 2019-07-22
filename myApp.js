@@ -2,6 +2,15 @@
 var express = require('express');
 var app = express();
 
+/** 7) Root-level Middleware - A logger */
+//  place it before all the routes !
+const logger = (req, res, next) => {
+console.log(`${req.method} ${req.path} - ${req.ip}`);
+next();
+}
+
+app.use(logger)
+
 // --> 7)  Mount the Logger middleware here
 
 
@@ -12,14 +21,13 @@ var app = express();
 console.log("Hello World");
 
 /** 2) A first working Express Server */
-const handler = function(req, res) {
-// res.send('Hello Express');
-}
-app.get('/', handler)
+// const handler = function(req, res) {
+// // res.send('Hello Express');
+// }
+// app.get('/', handler)
 
 /** 3) Serve an HTML file */
 const serveHtml = function(req, res) {
-console.log('send file index.html')
 res.sendFile(`${__dirname}/views/index.html`)
 }
 app.get('/', serveHtml)
@@ -30,17 +38,22 @@ app.use(assets)
 
 /** 5) serve JSON on a specific route */
 const response = {"message": "Hello json"}
-const serveJson = function(req, res) {
-res.json(process.env.MESSAGE_STYLE === 'uppercase' ? response.toUppercase : response)
-}
-app.get('/json', serveJson)
+// const serveJson = function(req, res) {
+// res.json(response)
+// }
+// app.get('/json', serveJson)
 
 /** 6) Use the .env file to configure the app */
- 
- 
-/** 7) Root-level Middleware - A logger */
-//  place it before all the routes !
-
+const serveJson = function(req, res) {
+res.json(
+  process.env.MESSAGE_STYLE === 'uppercase' ?
+  {
+    ...response,
+    message: response.message.toUpperCase()
+  } 
+  : response)
+}
+app.get('/json', serveJson)
 
 /** 8) Chaining middleware. A Time server */
 
